@@ -1,0 +1,23 @@
+Syntax for single task:
+cgh.single_task([=]() {                                                           // executed EXACTLY once on a SINGLE work-item
+});
+================================================
+Syntax for parallel_for :
+cgh.parallel_for(range<3>(1024,1024,1024),[=](id<3> myID) {                       // executed on an n-dimensional range (NDrange)
+});
+================================================
+Syntax for nd_range :
+cgh.parallel_for(nd_range<3>({1024,1024,1024},{16,16,16}), [=](nd_item<3> myID) { // executed on an n-dimensional range (NDrange)
+});
+================================================
+Syntax for parallel_for_work_group:
+cgh.parallel_for_work_group(range<2>(1024,1024), [=](group<2> myGroup) {          // executed once per work-group
+});
+================================================
+Syntax for parallel_for_work_item:
+grp.parallel_for_work_item(range<1>(1024), [=](h_item<1> myItem) {                // executed once per work-item
+});
+================================================
+printing values while thread launching:
+auto out = stream(1024, 1024 * 2, h);
+================================================
