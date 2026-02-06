@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector> // contiguous memory allocation
+#include <list>   // doubly link list
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+    //sequence containers
+    vector<int> v; // list<int> v; // list declaration and procedure was same
+    v.push_back(100);
+    v.push_back(20);
+    v.push_back(400);
+    v.push_back(50);
+    
+    //sort is random access iterator, can be used in vector only,not list
+    //list is bidirectional Iterator
+    sort(v.begin(),v.end());
+    //Iterators are similar to pointer..
+    auto itr = v.begin();//vector<int>::iterator itr = v.begin();
+    for(; itr != v.end() ; itr++ )
+    {
+        cout<<"Value => "<< *itr<<endl ;
+    }
+    //cout<<*itr<<endl;
+    //cout<<*(itr+1)<<endl;
+    //cout<<*(itr+2)<<endl;
+    //cout<<*(itr+15443)<<endl;
+    //cout<<*(itr+15443)<<endl;
+    
+    cout<<"Size  =>"<<v.size()<<endl;
+    v.clear();
+    cout<<"Size  =>"<<v.size()<<endl;
+    
+    return 0;
+}
